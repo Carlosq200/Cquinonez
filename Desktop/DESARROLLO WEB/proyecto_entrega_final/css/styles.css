@@ -1,0 +1,13 @@
+:root{ --bg:#f5f7fb; --soft:#eef2f7; }
+body{ background:var(--bg); font-family: Arial, Helvetica, sans-serif; }
+.avatar{ width:140px; height:140px; object-fit:cover; border-radius:50%; border:3px solid #ddd; transition: transform .2s; }
+.avatar:hover{ transform: scale(1.08); }
+@media(min-width:992px){ .container > .row{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; } }
+.listado li{ background:var(--soft); padding:.35rem .6rem; border-radius:.5rem; margin:.25rem 0; }
+.tabla-perfil thead th{ background:#111827; color:#fff; }
+.tabla-perfil tbody tr:nth-child(even){ background:#fafafa; }
+.table, .card{ border-radius: .75rem; }
+input:focus, textarea:focus{ outline:2px solid rgba(13,110,253,.4); }
+footer .decoracion::before{ content:'★ '; color: #f59e0b; }
+@keyframes aparecer{ from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);} }
+h1{ animation:aparecer .3s ease-out; }
