@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://s1uplfovq4.execute-api.us-east-1.amazonaws.com; img-src 'self' data:; style-src 'self'; script-src 'self';">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo API – AJAX</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="p-3">
+  <h1 class="h4 mb-3">Demo de API con jQuery (AJAX)</h1>
+  <p>Endpoint del examen: <code>https://s1uplfovq4.execute-api.us-east-1.amazonaws.com/default/example</code></p>
+
+  <div class="card" style="max-width: 680px;">
+    <div class="card-body">
+      <button id="btnApi" class="btn btn-primary mb-3">Pedir mensaje</button>
+      <div id="apiResultado" class="alert alert-secondary d-none">Aquí saldrá el mensaje</div>
+    </div>
+  </div>
+
+  <a href="index.html" class="btn btn-link mt-3">← Volver</a>
+
+  <script src="js/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('#btnApi').on('click', function(){
+        const $out = $('#apiResultado').removeClass('d-none alert-danger').addClass('alert-secondary').text('Cargando...');
+        $.ajax({
+          url: 'https://s1uplfovq4.execute-api.us-east-1.amazonaws.com/default/example',
+          method: 'GET',
+          dataType: 'json'
+        }).done(function(data){
+          $out.removeClass('alert-secondary').addClass('alert-success').text(data.mensaje || 'Sin mensaje');
+        }).fail(function(){
+          $out.removeClass('alert-secondary').addClass('alert-danger').text('No se pudo obtener el mensaje.');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

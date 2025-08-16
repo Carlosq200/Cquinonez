@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Chequeo de recursos locales</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <style>body{padding:1rem}</style>
+</head>
+<body>
+  <h1 class="h4">Chequeo de recursos locales</h1>
+  <p>Esta página revisa que <code>link</code> y <code>script</code> apunten a rutas locales (mismo origen <code>http://localhost:5500</code>), y alerta si encuentra un CDN.</p>
+  <div id="resultado" class="mt-3"></div>
+
+  <script>
+    (function(){
+      const origin = location.origin;
+      const recursos = [];
+      document.querySelectorAll('link[href],script[src]').forEach(el => {
+        const url = el.href || el.src;
+        recursos.push({tag: el.tagName.toLowerCase(), url});
+      });
+      const externos = recursos.filter(r => /^https?:\/\//.test(r.url) && !r.url.startsWith(origin));
+      const box = document.getElementById('resultado');
+      if (externos.length === 0) {
+        box.innerHTML = '<div class="alert alert-success">OK: todos los recursos cargan desde origen local (' + origin + ').</div>' +
+                        '<pre class="small bg-light p-2">' + recursos.map(r => r.tag + ' → ' + r.url).join('\n') + '</pre>';
+      } else {
+        box.innerHTML = '<div class="alert alert-danger">Se detectaron recursos externos (CDN). Corrige las rutas para que sean locales.</div>' +
+                        '<pre class="small bg-light p-2">' + externos.map(r => r.tag + ' → ' + r.url).join('\n') + '</pre>';
+      }
+    })();
+  </script>
+</body>
+</html>
