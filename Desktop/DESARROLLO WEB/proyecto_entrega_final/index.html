@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://s1uplfovq4.execute-api.us-east-1.amazonaws.com; img-src 'self' data:; style-src 'self'; script-src 'self';">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfil de Usuario - Examen</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container my-4">
+    <h1>Mi Perfil</h1>
+    <h2>Serie 2 - Desarrollo Web</h2>
+    <h3>Hecho por: Carlos Quiñonez</h3>
+
+    <p id="parrafo">Hola! Esta es mi página de perfil.</p>
+    <p>Recursos:
+      <a href="https://developer.mozilla.org/" target="_blank">MDN</a> y
+      <a href="demo-api-rest.html">Demo de API con AJAX</a>.
+    </p>
+
+    <img id="foto" src="img/logo-ultramedic.jpg" alt="ULTRA MEDIC – Ingeniería Médica" class="avatar mb-3">
+
+    <div class="row g-3">
+      <div class="col-md-6">
+        <h4>Mis intereses (ul)</h4>
+        <ul id="lista" class="listado">
+          <li>HTML</li>
+          <li>CSS</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>Metas (ol)</h4>
+        <ol class="listado">
+          <li>Terminar este examen</li>
+          <li>Subirlo a la plataforma</li>
+        </ol>
+      </div>
+    </div>
+
+    <h4 class="mt-4">Datos</h4>
+    <div class="table-responsive">
+      <table class="table tabla-perfil">
+        <thead><tr><th>Campo</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td>Nombre</td><td id="tdNombre">—</td></tr>
+          <tr><td>Correo</td><td id="tdCorreo">—</td></tr>
+          <tr><td>Intereses</td><td id="tdIntereses">HTML, CSS</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4 id="form">Formulario</h4>
+    <form id="perfilForm" class="row g-3" novalidate>
+      <div class="col-md-6">
+        <label class="form-label">Nombre</label>
+        <input id="nombre" type="text" class="form-control" placeholder="Tu nombre" required>
+        <div class="invalid-feedback">Escribe tu nombre.</div>
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Correo</label>
+        <input id="correo" type="email" class="form-control" placeholder="tu@correo.com" required>
+        <div class="invalid-feedback">Correo inválido.</div>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Biografía</label>
+        <textarea id="bio" class="form-control" rows="3" placeholder="Algo corto sobre mí..."></textarea>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Agregar interés a la lista</label>
+        <input id="nuevoInteres" type="text" class="form-control" placeholder="Ej: JavaScript">
+      </div>
+      <div class="col-12 d-flex gap-2">
+        <input type="submit" class="btn btn-success" value="Guardar">
+        <button type="button" id="btnAgregar" class="btn btn-outline-primary">Agregar a lista</button>
+        <button type="button" id="btnColor" class="btn btn-outline-secondary">Cambiar color del panel</button>
+        <button type="button" id="btnBienvenida" class="btn btn-primary">Bienvenida</button>
+        <button type="button" id="btnCambiarP" class="btn btn-outline-info" onclick="document.getElementById('parrafo').textContent='Este texto lo cambié con JavaScript 😎'">Cambiar párrafo</button>
+      </div>
+    </form>
+  </div>
+
+  <footer class="text-center my-4 small text-muted">
+    <span class="decoracion">Proyecto estudiante</span>
+  </footer>
+
+  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
